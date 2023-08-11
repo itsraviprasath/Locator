@@ -1,7 +1,9 @@
 import React from "react";
 import "./LoginRegister.css";
+import { Link } from "react-router-dom";
 
 const LoginRegister = (props) => {
+  const register = props?.register;
   return (
     <>
       <div id="login">
@@ -12,18 +14,43 @@ const LoginRegister = (props) => {
         </div>
         <div className="login-form">
           <form action="" method="get">
-            <label className="login-lable" htmlFor="email">
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               className="login-input"
               type="text"
               id="email"
               placeholder="you@abc.com"
             />
-            <label className="login-lable" htmlFor="password">
-              Password
-            </label>
+
+            {register ? (
+              <>
+                <label htmlFor="name">Name</label>
+                <input
+                  className="login-input"
+                  type="text"
+                  id="name"
+                  placeholder="Raviprasath"
+                />
+
+                <label htmlFor="phone-number">Phone Number</label>
+                <input
+                  className="login-input"
+                  type="tel"
+                  id="phone-number"
+                  placeholder="9876543210"
+                />
+
+                <label htmlFor="address">Address</label>
+                <input
+                  className="login-input"
+                  type="text"
+                  id="address"
+                  placeholder="Chennai, India"
+                />
+              </>
+            ) : null}
+
+            <label htmlFor="password">Password</label>
             <input
               className="login-input"
               type="password"
@@ -31,9 +58,9 @@ const LoginRegister = (props) => {
               placeholder="***********"
             />
 
-            <a className="login-forgot" href="#">
+            <Link className="login-forgot" to="#">
               {props?.forgotPassword}
-            </a>
+            </Link>
 
             <button className="login-submit" type="submit">
               {props?.button}
@@ -44,7 +71,7 @@ const LoginRegister = (props) => {
       <div className="register-redirect">
         <p>
           {props?.question}
-          <a href={props?.redirect}>{props?.account}</a>
+          <Link to={props?.redirect}>{props?.account}</Link>
         </p>
       </div>
     </>
