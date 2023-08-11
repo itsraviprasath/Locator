@@ -4,7 +4,7 @@ const getUser = async(req,res) => {
     try{
         await loginModel.find()
         .then((result) => {
-            console.log(result)
+            console.log("I am in get method")
         })
         .catch(err => {
             console.log(err)
@@ -15,30 +15,11 @@ const getUser = async(req,res) => {
     }
 }
 
-
-const addUser = async(req,res) => {
-    const { name,password } = req.body
-    try{
-        const newUser = new loginModel({
-            name:name,
-            password:password
-        })
-        await newUser.save()
-        .then((result) => {
-            console.log(result)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-    catch(err){
-        console.log(err)
-    }
-}
 
 const checkUser = async(req,res) => {
+    console.log("I am in login post method")
     const {name,password} = req.body
-    const user = await loginModel.findOne({name:req.body.name})
+    const user = await loginModel.findOne({name:name})
     console.log(user)
     if(user){
         
@@ -58,6 +39,5 @@ const checkUser = async(req,res) => {
 
 module.exports = {
     getUser,
-    addUser,
     checkUser
 }
