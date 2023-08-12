@@ -1,10 +1,62 @@
 import React from "react";
 import "./LoginRegister.css";
+import {useState,useEffect} from "react";
+import axios from "axios"
 import { Link } from "react-router-dom";
 
 const LoginRegister = (props) => {
-  const register = props?.register;
+
+  const [data,setdata] = useState("")
+
+  const [name,setName] = useState("")
+  const [password,setpassword] = useState("")
+  
+const getData = () => {
+    axios.get("http://localhost:3000/login").then(res => {
+      setdata(res.data)
+    }).catch(err => {
+      console.log("getting data failed", err);
+    });}
+ 
+  const postStudentData = (event) => {
+    axios.post("http://localhost:3000/login",{name:name,password:password})
+      
+    event.preventDefault()
+    console.log(name,password)
+  }   
+
+  const getregisterData = () => {
+    axios.get("http://localhost:3000/login").then(res => {
+      setdata(res.data)
+    }).catch(err => {
+      console.log("getting data failed", err);
+    });}
+
+  const postregisterData = async (event) => {
+    await axios.post("http://localhost:3000/register",{name:name,password:password})
+      
+    event.preventDefault()
+    console.log(name,password)
+  }   
+
+
+    useEffect(() => {
+      getData()
+    })
+
+    useEffect(() => {
+      getregisterData()
+    })
+
+
+
   return (
+    // <form>
+    // <input type="text" }></input>
+    // <input type="text" onChange={(event) => {setpassword(event.target.value)}}></input>
+    // <button onClick={postStudentData}>Login</button>
+    // <button onClick={postregisterData}>Register</button>
+    // </form>
     <>
       <div id="login">
         <div className="login-header">
@@ -14,55 +66,32 @@ const LoginRegister = (props) => {
         </div>
         <div className="login-form">
           <form action="" method="get">
-            <label htmlFor="email">Email</label>
+            <label className="login-lable" htmlFor="email">
+              Email
+            </label>
             <input
               className="login-input"
               type="text"
               id="email"
               placeholder="you@abc.com"
+              onChange={(event)=> {setpassword(event.target.value)}}
             />
-
-            {register ? (
-              <>
-                <label htmlFor="name">Name</label>
-                <input
-                  className="login-input"
-                  type="text"
-                  id="name"
-                  placeholder="Raviprasath"
-                />
-
-                <label htmlFor="phone-number">Phone Number</label>
-                <input
-                  className="login-input"
-                  type="tel"
-                  id="phone-number"
-                  placeholder="9876543210"
-                />
-
-                <label htmlFor="address">Address</label>
-                <input
-                  className="login-input"
-                  type="text"
-                  id="address"
-                  placeholder="Chennai, India"
-                />
-              </>
-            ) : null}
-
-            <label htmlFor="password">Password</label>
+            <label className="login-lable" htmlFor="password">
+              Password
+            </label>
             <input
               className="login-input"
               type="password"
               id="password"
               placeholder="***********"
+              onChange={(event) => {setpassword(event.target.value)}}
             />
 
-            <Link className="login-forgot" to="#">
+            <a className="login-forgot" href="#">
               {props?.forgotPassword}
-            </Link>
+            </a>
 
-            <button className="login-submit" type="submit">
+            <button className="login-submit" type="submit" onClick={postStudentData}>
               {props?.button}
             </button>
           </form>
@@ -71,11 +100,14 @@ const LoginRegister = (props) => {
       <div className="register-redirect">
         <p>
           {props?.question}
-          <Link to={props?.redirect}>{props?.account}</Link>
+          <a href={props?.redirect}>{props?.account}</a>
         </p>
       </div>
     </>
   );
 };
+
+
+
 
 export default LoginRegister;
