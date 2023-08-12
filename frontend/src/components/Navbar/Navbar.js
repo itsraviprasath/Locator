@@ -5,28 +5,22 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <>
-      <header class="header">
-        <Link to="/" class="logo">
-          Logo
+      <header className="header">
+        <Link to="/" className="logo">
+          Hugs for Bugs🫂
         </Link>
 
         <input type="checkbox" id="check" />
-        <label for="check" class="icons">
-          <Link class="bx bx-menu" id="menu-icon"></Link>
-          <Link class="bx bx-x" id="close-icon"></Link>
+        <label htmlFor="check" className="icons">
+          <Link className="bx bx-menu" id="menu-icon"></Link>
+          <Link className="bx bx-x" id="close-icon"></Link>
         </label>
 
-        <nav class="navbar">
-          <Link to="/" class="nav-item">
-            Home
+        <nav className="navbar">
+          <Link to="/" className="nav-item">
+            Route
           </Link>
-          <Link to="#" class="nav-item">
-            Order
-          </Link>
-          <Link to="#" class="nav-item">
-            Track
-          </Link>
-          <Link to="/profile" class="nav-item">
+          <Link to="/profile" className="nav-item">
             Profile
           </Link>
         </nav>
