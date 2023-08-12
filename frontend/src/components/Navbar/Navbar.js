@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <header className="header">
-        <Link to="/" className="logo">
+        <Link to="/home" className="logo">
           Hugs for Bugs🫂
         </Link>
 
@@ -17,7 +17,7 @@ const Navbar = () => {
         </label>
 
         <nav className="navbar">
-          <Link to="/" className="nav-item">
+          <Link to="/home" className="nav-item">
             Home
           </Link>
           <Link to="/profile" className="nav-item">
