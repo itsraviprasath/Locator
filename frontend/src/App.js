@@ -2,6 +2,7 @@ import "./App.css";
 import { Login, Register, Home, Profile } from "./Routes";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 function App() {
 //   const [data,setdata] = useState("")
 

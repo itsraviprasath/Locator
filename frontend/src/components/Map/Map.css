@@ -1,0 +1,61 @@
+.get-map-info {
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 30px;
+  width: 50%;
+  margin: 100px auto 0;
+}
+
+.orgin-label,
+.destination-label {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: block;
+}
+
+.orgin-input,
+.destination-input {
+  margin: 10px 0;
+  display: flex;
+  width: 100%;
+  padding: 13px 10px;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #ded2d9;
+}
+
+.calculate-btn,
+.clear-btn,
+.current-btn {
+  padding: 7px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.375rem;
+  background: #012970;
+  border: 0;
+  color: #fff;
+  font-size: 1rem;
+  margin: 10px 20px 10px 0;
+}
+
+.distance,
+.duration {
+  font-size: 1rem;
+}
+
+.location-detail {
+  position: relative;
+  padding: 10px;
+}
+
+.distance {
+  left: 0;
+  position: absolute;
+}
+
+.duration {
+  right: 0;
+  position: absolute;
+}

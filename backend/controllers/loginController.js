@@ -1,10 +1,23 @@
-const loginModel = require("../models/loginModel")
+const userModel = require("../models/userModel")
 
-const getUser = async(req,res) => {
+const getData = async(req,res) => {
+    await userModel.find()
+    .then(result => {
+        console.log(result)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+const getTheUser = async(req,res) => {
+    const id = req.params.id
     try{
-        await loginModel.find()
-        .then((result) => {
-            console.log(result)
+        console.log(id)
+        const user = await userModel.findOne({_id:id})
+        .then(res =>{
+            console.log("Successful")
+            console.log(res)
         })
         .catch(err => {
             console.log(err)
@@ -15,29 +28,35 @@ const getUser = async(req,res) => {
     }
 }
 
-
-const checkUser = async(req,res) => {
-    console.log("I am in login post method")
+const checkData = async(req,res) => {
     const {name,password} = req.body
-    const user = await loginModel.findOne({name:name})
-    console.log(user)
-    if(user){
-        
-        if(password == user.password){
-            console.log("User found")
+    // console.log("hello",name,password)
+    try {
+        const user = await userModel.findOne({name:name})
+       
+        if(user){
+            if(password == user.password){
+                console.log("User found")
+                res.json("User found")
+            }
+            else{
+                console.log("Incorrect password")
+                res.json("Incorrect password")
+            }
         }
         else{
-            console.log("Incorrect Password")
+            console.log("Incorrect email")
+            res.json("Incorrect email")
         }
     }
-    else{
-        console.log("Incorrect Email")
+    catch(err){
+        console.log(err)
     }
 }
 
 
-
 module.exports = {
-    getUser,
-    checkUser
+    getData,
+    getTheUser,
+    checkData
 }

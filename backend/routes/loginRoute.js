@@ -1,54 +1,11 @@
 const express = require("express")
 const route = express.Router()
-const { getUser,checkUser } = require("../controllers/loginController")
+const {getData,getTheUser,checkData} = require("../controllers/loginController")
 
+route.get("/",getData)
 
-route.get("/",getUser)
+route.get("/:id",getTheUser)
 
-route.post("/",checkUser)
-
-
+route.post("/",checkData)
 
 module.exports = route
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
