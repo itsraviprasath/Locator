@@ -4,7 +4,7 @@ const getUser = async(req,res) => {
     try{
         await loginModel.find()
         .then((result) => {
-            console.log("I am in get method")
+            console.log(result)
         })
         .catch(err => {
             console.log(err)

@@ -1,4 +1,6 @@
-import Login from "./pages/LoginRegister/Login";
-import Register from "./pages/LoginRegister/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile.js";
 
-export { Login, Register };
+export { Login, Register, Home, Profile };

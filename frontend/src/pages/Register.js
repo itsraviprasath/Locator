@@ -1,5 +1,5 @@
 import React from "react";
-import LoginRegister from "../../components/LoginRegister/LoginRegister";
+import LoginRegister from "../components/LoginRegister/LoginRegister";
 
 const Register = () => {
   return (
@@ -7,10 +7,10 @@ const Register = () => {
       <LoginRegister
         title="Create an Account"
         button="Register"
-        forgotPassword=""
         question="Already Have an account?"
-        account="Login to your account"
+        account="  Login to your account"
         redirect="/login"
+        register={true}
       />
     </>
   );
