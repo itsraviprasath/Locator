@@ -18,7 +18,7 @@ const Navbar = () => {
 
         <nav className="navbar">
           <Link to="/" className="nav-item">
-            Route
+            Home
           </Link>
           <Link to="/profile" className="nav-item">
             Profile

@@ -113,44 +113,50 @@ const Map = () => {
           />
         </Autocomplete>
         <button className="calculate-btn" onClick={calculateRoute}>
-          Calculate
+          Locate
         </button>
         <button className="clear-btn" onClick={clearRoute}>
           Clear
         </button>
-        <button className="current-btn" onClick={() => map.panTo(myLatLng)}>
-          Current Location
-        </button>
-        {/* {distanceResponse && ( */}
-        <div className="location-detail">
-          <span className="distance">Distance: {distance}</span>
-          <span className="duration">Duration: {duration}</span>
-        </div>
-        {/* )} */}
+
+        {distanceResponse && (
+          <>
+            <button className="current-btn" onClick={() => map.panTo(myLatLng)}>
+              Current Location
+            </button>
+            <div className="location-detail">
+              <span className="distance">Distance: {distance}</span>
+              <span className="duration">Duration: {duration}</span>
+            </div>
+          </>
+        )}
       </div>
 
-      {/* Google Map Box */}
-      <GoogleMap
-        center={myLatLng}
-        zoom={18}
-        mapContainerStyle={{
-          width: "100%",
-          height: "100vh",
-          margin: "60px auto 0",
-        }}
-        options={{
-          zoomControl: false,
-          fullscreenControl: false,
-          mapTypeControl: false,
-          streetViewControl: false,
-        }}
-        onLoad={(map) => setMap(map)}
-      >
-        <MarkerF position={myLatLng} />
-        {distanceResponse && (
-          <DirectionsRenderer directions={distanceResponse} />
-        )}
-      </GoogleMap>
+      {distanceResponse && (
+        <>
+          <GoogleMap
+            center={myLatLng}
+            zoom={18}
+            mapContainerStyle={{
+              width: "100%",
+              height: "100vh",
+              margin: "60px auto 0",
+            }}
+            options={{
+              zoomControl: false,
+              fullscreenControl: false,
+              mapTypeControl: false,
+              streetViewControl: false,
+            }}
+            onLoad={(map) => setMap(map)}
+          >
+            <MarkerF position={myLatLng} />
+            {distanceResponse && (
+              <DirectionsRenderer directions={distanceResponse} />
+            )}
+          </GoogleMap>
+        </>
+      )}
     </>
   );
 };
