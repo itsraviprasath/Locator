@@ -14,9 +14,12 @@ const Login = () => {
     axios
       .post("http://localhost:3000/login", { name: name, password: password })
       .then((result) => {
-        console.log(result.data);
+        console.log(result);
+
         if (result.data === "User found") {
           navigate("/home");
+        } else {
+          alert("User not found or wrong password");
         }
       })
       .catch((err) => console.log(err));

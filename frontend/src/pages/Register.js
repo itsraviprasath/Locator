@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -15,6 +18,9 @@ const Register = () => {
       .post("http://localhost:3000/register", {
         name: name,
         password: password,
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        address: address,
       })
       .then((result) => {
         console.log(result);
@@ -36,11 +42,44 @@ const Register = () => {
             <label htmlFor="email">Email</label>
             <input
               className="login-input"
-              type="text"
+              type="email"
               id="email"
               placeholder="you@abc.com"
               onChange={(event) => {
                 setName(event.target.value);
+              }}
+            />
+
+            <label htmlFor="name">Name</label>
+            <input
+              className="login-input"
+              type="text"
+              id="name"
+              placeholder="Raviprasath"
+              onChange={(event) => {
+                setFullName(event.target.value);
+              }}
+            />
+
+            <label htmlFor="phone-number">Phone Number</label>
+            <input
+              className="login-input"
+              type="tel"
+              id="phone-number"
+              placeholder="9876543210"
+              onChange={(event) => {
+                setPhoneNumber(event.target.value);
+              }}
+            />
+
+            <label htmlFor="address">Address</label>
+            <input
+              className="login-input"
+              type="text"
+              id="address"
+              placeholder="Chennai, India"
+              onChange={(event) => {
+                setAddress(event.target.value);
               }}
             />
 
@@ -54,10 +93,6 @@ const Register = () => {
                 setPassword(event.target.value);
               }}
             />
-
-            {/* <Link className="login-forgot" to="#">
-              Forgot Password
-            </Link> */}
 
             <button className="login-submit" type="submit">
               Register
@@ -76,27 +111,3 @@ const Register = () => {
 };
 
 export default Register;
-
-{
-  /* <label htmlFor="name">Name</label>
-            <input
-              className="login-input"
-              type="text"
-              id="name"
-              placeholder="Raviprasath"
-            />
-
-            <label htmlFor="phone-number">Phone Number</label>
-            <input
-              className="login-input"
-              type="tel"
-              id="phone-number"
-              placeholder="9876543210"
-            />
-
-            <label htmlFor="address">Address</label>
-            <input
-             id="address"
-              placeholder="Chennai, India"
-            /> */
-}
