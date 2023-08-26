@@ -1,5 +1,5 @@
 import React from "react";
-import "./Data.css";
+import "../assests/Data.css";
 import { Link } from "react-router-dom";
 
 const Data = (props) => {

@@ -1,62 +1,29 @@
-const userModel = require("../models/userModel")
+const User = require("../models/userModel");
+const bcrypt = require('bcrypt');
 
-const getData = async(req,res) => {
-    await userModel.find()
-    .then(result => {
-        console.log(result)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}
 
-const getTheUser = async(req,res) => {
-    const id = req.params.id
+const authUser = async(req,res)=>{
     try{
-        console.log(id)
-        const user = await userModel.findOne({_id:id})
-        .then(res =>{
-            console.log("Successful")
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-    catch(err){
-        console.log(err)
-    }
-}
-
-const checkData = async(req,res) => {
-    const {name,password} = req.body
-    // console.log("hello",name,password)
-    try {
-        const user = await userModel.findOne({name:name})
-       
-        if(user){
-            if(password == user.password){
-                console.log("User found")
-                res.json("User found")
+        const user = await User.findOne({ email: req.body.email });
+        if(!user)
+        res.send({message:"User not exsits",login:"false"})
+        else{
+            const validPassword = await bcrypt.compare(req.body.password,user.password)
+            if(!validPassword){
+                res.send({message:"Invalid Password",login:"false"})
             }
             else{
-                console.log("Incorrect password")
-                res.json("Incorrect password")
+                res.send(user)
             }
-        }
-        else{
-            console.log("Incorrect email")
-            res.json("Incorrect email")
-        }
-    }
+        }}
+    
+    
     catch(err){
-        console.log(err)
+        console.log("Error is" + err)
+        res.status(500).send({message:"internal Server Error"});
     }
 }
 
 
-module.exports = {
-    getData,
-    getTheUser,
-    checkData
-}
+module.exports=authUser;
+

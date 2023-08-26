@@ -1,6 +1,16 @@
+import LoginRegister from "./components/LoginRegister";
+import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile.js";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home"
 
-export { Login, Register, Home, Profile };
+
+export {
+  LoginRegister,
+  Navbar,
+  Login,
+  Register,
+  Profile,
+  Home
+};

@@ -2,8 +2,8 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const dotenv = require("dotenv")
-const registerRoute = require("./routes/registerRoute")
 const loginRoute = require("./routes/loginRoute")
+const registerRoute = require("./routes/registerRoute")
 
 
 
@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-app.use("/register",registerRoute)
-app.use("/login",loginRoute);   
+app.use("/register",registerRoute);
+app.use("/login",loginRoute);  
 
 
 const PORT = process.env.PORT

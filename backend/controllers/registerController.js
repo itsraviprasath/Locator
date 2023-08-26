@@ -1,41 +1,21 @@
-const userModel = require("../models/userModel");
+const User  = require("../models/userModel");
+const bcrypt = require("bcrypt");
 
-const getData = async (req, res) => {
-  await userModel
-    .find()
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-const postData = async (req, res) => {
-  const { name, password, fullName, phoneNumber, address } = req.body;
+const registeruser = async (req, res) => {
   try {
-    const newUser = new userModel({
-      name: name,
-      password: password,
-      fullName: fullName,
-      phoneNumber: phoneNumber,
-      address: address,
-    });
-
-    await newUser
-      .save()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const user = await User.findOne({email:req.body.email})
+    if (user){
+      
+      res.status(409).send({ message: "user with given email already exists" });}
+    else {
+      const salt = await bcrypt.genSalt(Number(process.env.SALT));
+      const hashPassword = await bcrypt.hash(req.body.password, salt);
+      const user = await new User({ ...req.body, password: hashPassword }).save();
+      res.status(201).send(user);
+    }
   } catch (err) {
-    console.log(err);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 };
 
-module.exports = {
-  getData,
-  postData,
-};
+module.exports = registeruser;

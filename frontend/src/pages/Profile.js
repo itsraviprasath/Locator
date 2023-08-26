@@ -1,16 +1,19 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-import Data from "../components/Data/Data";
+import Data from "../components/Data";
 
 const Profile = () => {
+
+  const datas = JSON.parse(localStorage.getItem("Data"));
+
   return (
     <>
       <Navbar />
       <Data
-        name="Raviprasath"
-        email="raviprasath.in@gmail.com"
-        phone="9994895712"
-        address="Ambedkar Street, Sriramapuram, Dindigul, Tamil Nadu, India."
+        name={datas.name}
+        email={datas.email}
+        phone={datas.phoneNumber}
+        address={datas.address}
       />
     </>
   );

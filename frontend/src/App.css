@@ -1,17 +1,147 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: Nunito Sans;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-button {
-  cursor: pointer;
+body {
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
 }
 
+section,
+footer,
+main {
+  padding: 0 50px;
+}
+
+main {
+  margin-top: 30px;
+}
+
+Link,
 a {
   text-decoration: none;
+  color: #012970;
+}
+
+button,
+a {
   cursor: pointer;
+}
+
+::placeholder {
+  color: var(--gray-5, #e0e0e0);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Grid Styles */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: aliceblue;
+  padding: 5px 10px 5px 30px;
+}
+
+.hover:hover {
+  background-color: #e6e6e6;
+}
+
+.button {
+  width: 100%;
+  padding: 13px;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  border-radius: 0.375rem;
+  background: #012970;
+  border: none;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 10px 0 20px;
+}
+
+.label {
+  display: block;
+  color: var(--gray-3, #828282);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.input {
+  display: block;
+  width: 26.25rem;
+  padding: 0.8125rem 0.625rem;
+  align-items: center;
+  gap: 0.8125rem;
+  border-radius: 0.3125rem;
+  border: 1px solid #ded2d9;
+  margin-bottom: 10px;
+}
+
+.create-btn {
+  background-color: #012970;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.create-popup-content {
+  width: 31% !important;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  section,
+  footer,
+  main {
+    padding: 0 25px;
+    margin-bottom: 100px;
+  }
+
+
+  .all-loans {
+    padding: 0 5px;
+  }
+
+  .page-heading {
+    margin-left: 25px;
+  }
+
+  .create-popup-content {
+    width: 90% !important;
+  }
+
 }
