@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Data from "../components/Data";
 
 const Profile = () => {
+  
 
   const datas = JSON.parse(localStorage.getItem("Data"));
 
